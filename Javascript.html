@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AttendanceQueries</title>
+    <style>
+        body{
+            justify-content: center; /* Horizontally center content */
+            align-items: center; /* Vertically center content */
+        }
+        table {
+            width: 80%; /* Center the table by setting a width and using margin auto */
+            margin: 0 auto;
+            border-collapse: collapse; /* Remove default cell spacing */
+        }
+
+        th, td {
+            border: 1px solid #1bbbeb; /* Borders to table cells for readability and allignment */
+            text-align: center; /* Center-align content within cells */
+            padding: 10px; /* Padding added for better readability */
+        }
+
+        th {
+            background-color: rgb(170, 189, 244) /* Table header has Bluish background */
+        }
+    </style>
+</head>
+<body>
+    <p> <center> Welcome Teaching Fellow! you have some queries to review.</center>
+        <p>
+            <br/>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Student</th>
+                <th>Query</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="QueryTableBody"></tbody>
+    </table>
+
+    <script>
+        const queries = [
+            { id: 1, student: "Genesis", query: "Permission to absent from tech class", status: "APPROVED" },
+            { id: 2, student: "Nunya", query: "Permission to Absa Hackathon", status: "APPROVED" },
+            { id: 3, student: "Fleeur", query: "Permission to shoot film", status: "DECLINED" },
+            { id: 4, student: "Delight", query: "Need some delightful time to cool off", status: "DECLINED" },
+            { id: 5, student: "Sila", query: "Permission to participate in Absa Hackathon", status: "PENDING" }
+        ];
+
+        const queryTableBody = document.getElementById("QueryTableBody");
+
+        for (const queryItem of queries) {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${queryItem.id}</td>
+                <td>${queryItem.student}</td>
+                <td>${queryItem.query}</td>
+                <td>${queryItem.status}</td>
+                <td>
+                    <button onclick="approveQuery(${queryItem.id})">Approve</button>
+                    <button onclick="rejectQuery(${queryItem.id})">Reject</button>
+                </td>
+            `;
+            queryTableBody.appendChild(row);
+        }
+
+        function approveQuery(id) {
+            alert(`Attendancy Q=query with ID ${id} has been approved.`);
+        }
+
+        function rejectQuery(id) {
+            alert(`Attendance query with ID ${id} has been rejected.`);
+        }
+    </script>
+</body>
+</html>
